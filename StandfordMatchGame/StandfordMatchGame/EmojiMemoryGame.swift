@@ -20,9 +20,9 @@ class EmojiMemoryGame {
         MemoryGame<String>(numberOfPairsOfCards: 4) { pairIndex in EmojiMemoryGame.emojies[pairIndex]}
     }
     
-    private var model: MemoryGame<String> = createMemoryGame()
+    private(set) var model: MemoryGame<String> = createMemoryGame()
     
     var cards: Array<MemoryGame<String>.Card> {
-        return model.cards
+        model.cards
     }
 }
