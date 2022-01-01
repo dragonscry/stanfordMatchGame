@@ -20,9 +20,15 @@ class EmojiMemoryGame {
         MemoryGame<String>(numberOfPairsOfCards: 4) { pairIndex in EmojiMemoryGame.emojies[pairIndex]}
     }
     
-    private(set) var model: MemoryGame<String> = createMemoryGame()
+    private var model: MemoryGame<String> = createMemoryGame()
     
     var cards: Array<MemoryGame<String>.Card> {
         model.cards
+    }
+    
+    //MARK: - Intent(s)
+    
+    func choose(_ card: MemoryGame<String>.Card) {
+        model.choose(card)
     }
 }

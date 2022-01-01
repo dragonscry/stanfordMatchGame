@@ -9,19 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     
-    var viewModel: EmojiMemoryGame
+    let viewModel: EmojiMemoryGame
     
     var body: some View {
-        VStack {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
-                    ForEach(viewModel.cards, id: \.self){ card in
-                        CardView(text: value).aspectRatio(2/3, contentMode: .fit)
+                    ForEach(viewModel.cards){ card in
+                        CardView(card: card).aspectRatio(2/3, contentMode: .fit)
+                            .onTapGesture {
+                                viewModel.choose(card)
+                            }
                     }
                 }
             }
-            
-        }
         .padding(.horizontal)
         .foregroundColor(.red)
     }
@@ -36,14 +36,14 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct CardView: View {
-    
+    let card: MemoryGame<String>.Card
     var body: some View {
         ZStack {
             let shape = RoundedRectangle(cornerRadius: 20)
-            if faceUp {
+            if card.isFaceUp {
                 shape.fill(.white)
                 shape.stroke(lineWidth: 3)
-                Text("\(text)")
+                Text("\(card.content)")
                     .font(.largeTitle)
             } else {
                 shape.fill()
