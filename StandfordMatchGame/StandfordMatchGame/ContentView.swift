@@ -42,10 +42,13 @@ struct CardView: View {
             let shape = RoundedRectangle(cornerRadius: 20)
             if card.isFaceUp {
                 shape.fill(.white)
-                shape.stroke(lineWidth: 3)
+                shape.strokeBorder(lineWidth: 3)
                 Text("\(card.content)")
                     .font(.largeTitle)
-            } else {
+            } else if card.isMatched {
+                shape.opacity(0)
+            }
+            else {
                 shape.fill()
             }
         }
