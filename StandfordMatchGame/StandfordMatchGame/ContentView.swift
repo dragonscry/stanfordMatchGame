@@ -12,6 +12,11 @@ struct ContentView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
+        VStack {
+            Text(EmojiMemoryGame.themes[viewModel.number].themeName)
+                .font(.largeTitle)
+                .padding(.horizontal)
+            Text("Your Score is \(viewModel.score())")
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
                     ForEach(viewModel.cards){ card in
@@ -22,8 +27,15 @@ struct ContentView: View {
                     }
                 }
             }
-        .padding(.horizontal)
-        .foregroundColor(.red)
+            .padding(.horizontal)
+            .foregroundColor(.red)
+            
+            Button(action: {
+                viewModel.reinvoke()
+            }){
+                Text("New Game")
+            }
+        }
     }
 }
 
