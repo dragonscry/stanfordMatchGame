@@ -10,7 +10,10 @@ import Foundation
 struct MemoryGame<CardContent> where CardContent: Equatable {
     private(set) var cards: Array<Card>
     
-    private var indexOfTheOneAndOnlyFaceUpCard: Int?
+    private var indexOfTheOneAndOnlyFaceUpCard: Int? {
+        get { cards.indices.filter({ cards[$0].isFaceUp }).oneAndOnly }
+        set { cards.indices.forEach { cards[$0].isFaceUp = ($0 == newValue) } }
+    }
     
     var score = 0
     
@@ -33,22 +36,17 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                         self.score -= 1
                     }
                 }
+                cards[chosenIndex].isFaceUp = true
                 cards[chosenIndex].wasChosen = true
                 cards[potentialMatchIndex].wasChosen = true
-                indexOfTheOneAndOnlyFaceUpCard = nil
             } else {
-                for index in cards.indices {
-                    cards[index].isFaceUp = false
-                }
                 indexOfTheOneAndOnlyFaceUpCard = chosenIndex
             }
-            cards[chosenIndex].isFaceUp.toggle()
-            
         }
     }
     
     init(numberOfPairsOfCards: Int, createCardContent: (Int)->CardContent ){
-        cards = Array<Card>()
+        cards = []
         // add numb x 2 cards to cards array
         for pairIndex in 0..<numberOfPairsOfCards {
             let content = createCardContent(pairIndex)
@@ -60,17 +58,17 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     }
     
     struct Card: Identifiable {
-        var isFaceUp: Bool = false
-        var isMatched: Bool = false
+        var isFaceUp = false
+        var isMatched = false
         var content: CardContent
         var id : Int
         var wasChosen: Bool = false
     }
 }
 
-struct Theme {
+struct Theme<Content> {
     let themeName : String
-    var emojies: [String]
+    var emojies: [Content]
     private var numberOfPairs: Int
     var cardPairs: Int {
         get {
@@ -94,10 +92,20 @@ struct Theme {
     }
     let cardColor: String
     
-    init(themeName: String, emojies: [String], numberOfPairs: Int, cardColor: String){
+    init(themeName: String, emojies: [Content], numberOfPairs: Int, cardColor: String){
         self.themeName = themeName
         self.emojies = emojies
         self.numberOfPairs = numberOfPairs
         self.cardColor = cardColor
+    }
+}
+
+extension Array {
+    var oneAndOnly: Element? {
+        if self.count == 1 {
+            return self.first
+        } else {
+            return nil
+        }
     }
 }

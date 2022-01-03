@@ -10,12 +10,12 @@ import SwiftUI
 class EmojiMemoryGame: ObservableObject {
     
     static let themes = [
-        Theme(themeName: "Jorney", emojies: ["🚘","🚔","🚅","✈️","🦼", "🛴", "🛵", "🚲", "🛺", "🚍", "🚡", "🚠", "🚃", "🚝", "🛩", "🛰"], numberOfPairs: 5, cardColor: "red"),
-        Theme(themeName: "Smiles", emojies: ["😀","😄","🙃","😉","🥸","😜","😩","😍","😋","☹️","😔","🥺"], numberOfPairs: 8, cardColor: "indigo"),
-        Theme(themeName: "Animals", emojies: ["🐶","🐱","🐭","🐹","🦊","🐰","🐻","🐼","🐻‍❄️","🐨","🐯","🦁"], numberOfPairs: 40, cardColor: "red"),
-        Theme(themeName: "Food", emojies: ["🍏","🍐","🍊","🍋","🍌","🍉","🍇","🍓","🍈","🫐","🍒","🍑"], numberOfPairs: 8, cardColor: "blue"),
-        Theme(themeName: "Activity", emojies: ["⚽️","🏀","🏈","⚾️","🥎","🎾","🏐","🏉","🥏","🎱","🏓","🏒"], numberOfPairs: 8, cardColor: "gray"),
-        Theme(themeName: "Objects", emojies: ["⌚️","📱","💻","🖥","🖨","🕹","💽","💾","📼","☎️","🧭","⏰"], numberOfPairs: 8, cardColor: "green")]
+        Theme<String>(themeName: "Jorney", emojies: ["🚘","🚔","🚅","✈️","🦼", "🛴", "🛵", "🚲", "🛺", "🚍", "🚡", "🚠", "🚃", "🚝", "🛩", "🛰"], numberOfPairs: 5, cardColor: "red"),
+        Theme<String>(themeName: "Smiles", emojies: ["😀","😄","🙃","😉","🥸","😜","😩","😍","😋","☹️","😔","🥺"], numberOfPairs: 8, cardColor: "indigo"),
+        Theme<String>(themeName: "Animals", emojies: ["🐶","🐱","🐭","🐹","🦊","🐰","🐻","🐼","🐻‍❄️","🐨","🐯","🦁"], numberOfPairs: 40, cardColor: "red"),
+        Theme<String>(themeName: "Food", emojies: ["🍏","🍐","🍊","🍋","🍌","🍉","🍇","🍓","🍈","🫐","🍒","🍑"], numberOfPairs: 8, cardColor: "blue"),
+        Theme<String>(themeName: "Activity", emojies: ["⚽️","🏀","🏈","⚾️","🥎","🎾","🏐","🏉","🥏","🎱","🏓","🏒"], numberOfPairs: 8, cardColor: "gray"),
+        Theme<String>(themeName: "Objects", emojies: ["⌚️","📱","💻","🖥","🖨","🕹","💽","💾","📼","☎️","🧭","⏰"], numberOfPairs: 8, cardColor: "green")]
     
     var number : Int
     
