@@ -17,18 +17,22 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .padding(.horizontal)
             Text("Your Score is \(viewModel.score())")
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
-                    ForEach(viewModel.cards){ card in
-                        CardView(card: card).aspectRatio(2/3, contentMode: .fit)
-                            .onTapGesture {
-                                viewModel.choose(card)
-                            }
+            //            ScrollView {
+            //                LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))])
+            //                {
+            //                    ForEach(viewModel.cards){ card in
+            AspectVGrid(items: viewModel.cards, aspectRatio: 2/3, content: { card in
+                CardView(card: card)
+                    .padding(4)
+                    .onTapGesture {
+                        viewModel.choose(card)
                     }
-                }
-            }
-            .padding(.horizontal)
-            .foregroundColor(.red)
+            })
+            //                    }
+            //                }
+            //            }
+                .padding(.horizontal)
+                .foregroundColor(.red)
             
             Button(action: {
                 viewModel.reinvoke()
