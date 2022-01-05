@@ -14,6 +14,7 @@
 		9A1E398F277E6532005F2C75 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1E398E277E6532005F2C75 /* MemoryGame.swift */; };
 		9A1E3991277E6A32005F2C75 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1E3990277E6A32005F2C75 /* EmojiMemoryGame.swift */; };
 		9A24D5AA2784AEAD00B65BDA /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A24D5A92784AEAD00B65BDA /* AspectVGrid.swift */; };
+		9A9B5B542785DAE000EE9598 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B5B532785DAE000EE9598 /* Pie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		9A1E398E277E6532005F2C75 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		9A1E3990277E6A32005F2C75 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		9A24D5A92784AEAD00B65BDA /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
+		9A9B5B532785DAE000EE9598 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				9A1E3980277C7B63005F2C75 /* StandfordMatchGameApp.swift */,
 				9A1E3982277C7B63005F2C75 /* ContentView.swift */,
+				9A9B5B532785DAE000EE9598 /* Pie.swift */,
 				9A24D5A92784AEAD00B65BDA /* AspectVGrid.swift */,
 				9A1E398E277E6532005F2C75 /* MemoryGame.swift */,
 				9A1E3990277E6A32005F2C75 /* EmojiMemoryGame.swift */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A9B5B542785DAE000EE9598 /* Pie.swift in Sources */,
 				9A1E398F277E6532005F2C75 /* MemoryGame.swift in Sources */,
 				9A1E3983277C7B63005F2C75 /* ContentView.swift in Sources */,
 				9A1E3981277C7B63005F2C75 /* StandfordMatchGameApp.swift in Sources */,
