@@ -10,7 +10,15 @@ import SwiftUI
 struct Pie: Shape {
     
     func path(in rect: CGRect) -> Path {
-        var a = path(in: )
+        
+        let center = CGPoint(x: rect.midX, y: rect.midY)
+        let radius = min(rect.width, rect.height)/2
+        
+        var p = Path()
+        
+        
+        
+        return p
     }
     
     
