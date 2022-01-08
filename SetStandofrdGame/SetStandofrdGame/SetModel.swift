@@ -9,14 +9,31 @@ import Foundation
 
 struct SetGame {
     
-    private let fullDeck : SetGameDeck
+    private let Deck : SetGameDeck
     
-    private(set) var deck : Array<SetCard>
+    private var fullDeck : Array<SetCard>
+    private(set) var currentDeck : Array<SetCard>
     
     
     mutating func choose(_ card: SetCard) {
         
     }
+    
+    mutating func addThreeCards() {
+        for _ in 0..<3 {
+            currentDeck.append(fullDeck.removeFirst())
+        }
+    }
+    
+    init() {
+        Deck = SetGameDeck()
+        fullDeck = Deck.deck
+        currentDeck = []
+        for _ in 0..<12 {
+            currentDeck.append(fullDeck.removeFirst())
+        }
+    }
+    
 }
 
 struct SetGameDeck {
