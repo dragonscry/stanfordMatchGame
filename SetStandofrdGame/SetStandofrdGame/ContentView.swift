@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let startGame = SetGame()
+    
     var body: some View {
-        Text("Hello, world!")
+        Text("Hi")
             .padding()
     }
 }
