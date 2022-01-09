@@ -14,6 +14,8 @@
 		9A9B5B702789EB1F00EE9598 /* SetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B5B6F2789EB1F00EE9598 /* SetModel.swift */; };
 		9A9B5B72278A48DA00EE9598 /* SetModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B5B71278A48DA00EE9598 /* SetModelView.swift */; };
 		9A9B5B74278A4BC300EE9598 /* SetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B5B73278A4BC300EE9598 /* SetCardView.swift */; };
+		9A9B5B76278AF33300EE9598 /* SymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B5B75278AF33300EE9598 /* SymbolView.swift */; };
+		9A9B5B78278AF4A700EE9598 /* DiamondShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B5B77278AF4A700EE9598 /* DiamondShape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		9A9B5B6F2789EB1F00EE9598 /* SetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetModel.swift; sourceTree = "<group>"; };
 		9A9B5B71278A48DA00EE9598 /* SetModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetModelView.swift; sourceTree = "<group>"; };
 		9A9B5B73278A4BC300EE9598 /* SetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardView.swift; sourceTree = "<group>"; };
+		9A9B5B75278AF33300EE9598 /* SymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolView.swift; sourceTree = "<group>"; };
+		9A9B5B77278AF4A700EE9598 /* DiamondShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondShape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				9A9B5B612789EADD00EE9598 /* SetStandofrdGameApp.swift */,
 				9A9B5B632789EADD00EE9598 /* ContentView.swift */,
 				9A9B5B73278A4BC300EE9598 /* SetCardView.swift */,
+				9A9B5B75278AF33300EE9598 /* SymbolView.swift */,
+				9A9B5B77278AF4A700EE9598 /* DiamondShape.swift */,
 				9A9B5B6F2789EB1F00EE9598 /* SetModel.swift */,
 				9A9B5B71278A48DA00EE9598 /* SetModelView.swift */,
 				9A9B5B652789EADE00EE9598 /* Assets.xcassets */,
@@ -146,7 +152,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A9B5B76278AF33300EE9598 /* SymbolView.swift in Sources */,
 				9A9B5B642789EADD00EE9598 /* ContentView.swift in Sources */,
+				9A9B5B78278AF4A700EE9598 /* DiamondShape.swift in Sources */,
 				9A9B5B74278A4BC300EE9598 /* SetCardView.swift in Sources */,
 				9A9B5B72278A48DA00EE9598 /* SetModelView.swift in Sources */,
 				9A9B5B702789EB1F00EE9598 /* SetModel.swift in Sources */,
