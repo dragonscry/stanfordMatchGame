@@ -20,17 +20,6 @@ struct SetCardView: View {
             return .green
         }
     }
-
-    var cardSymbol: Shape {
-        switch card.cardSymbol {
-        case .rect :
-            return Rectangle()
-        case .diamond :
-            return RoundedRectangle(cornerRadius: 30)
-        case.oval :
-            return Capsule()
-        }
-    }
     
     var cardCount : Int {
         switch card.cardCount {
@@ -66,7 +55,7 @@ struct SetCardView: View {
                         Rectangle().fill(cardFill)
                     }
                     else {
-                        RoundedRectangle(cornerRadius: 20).strokeBorder(lineWidth: 3).foregroundColor(cardFill)
+                        DiamondShape().fill(cardFill)
                     }
                 }
             }
@@ -76,6 +65,6 @@ struct SetCardView: View {
 
 struct SetCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SetCardView(card: SetCard(id: 1, cardColor: .red, cardSymbol: .rect, cardCount: .one, cardFill: .filled))
+        SetCardView(card: SetCard(id: 3, cardColor: .red, cardSymbol: .diamond, cardCount: .three, cardFill: .filled))
     }
 }
