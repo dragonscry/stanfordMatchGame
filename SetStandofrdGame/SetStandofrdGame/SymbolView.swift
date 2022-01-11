@@ -12,9 +12,11 @@ struct SymbolView: View {
     let color = Color.red
     
     var body: some View {
-        ZStack {
-            Ellipse().fill(color.opacity(0.5)).overlay(Rectangle().strokeBorder(lineWidth: 3).foregroundColor(.red))
-        }.frame(width: 200, height: 100)
+        GeometryReader { proxy in
+            ZStack {
+                Ellipse().fill(color.opacity(0.5)).overlay(Rectangle().strokeBorder(lineWidth: 3).foregroundColor(.red))
+            }.frame(width: proxy.size.width, height: proxy.size.height / 3)
+        }
     }
 }
 
