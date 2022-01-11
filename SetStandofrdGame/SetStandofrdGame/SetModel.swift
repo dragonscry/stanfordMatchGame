@@ -16,7 +16,9 @@ struct SetGame {
     
     
     mutating func choose(_ card: SetCard) {
-        
+        if let chosenIndex = currentDeck.firstIndex(where: {$0.id == card.id}) {
+            currentDeck[chosenIndex].isChosen.toggle()
+        }
     }
     
     mutating func addThreeCards() {

@@ -46,6 +46,7 @@ struct SetCardView: View {
     
     var body: some View {
         ZStack {
+            Color(card.isChosen ? .yellow : .white)
             GeometryReader { geometry in
                 VStack {
                     ForEach(0..<cardCount){ index in
@@ -56,6 +57,7 @@ struct SetCardView: View {
                 }
                 .position(x: geometry.size.width/2, y: geometry.size.height/2)
             }
+
         }.overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3))
     }
 }

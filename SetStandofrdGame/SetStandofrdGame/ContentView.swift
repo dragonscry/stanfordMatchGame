@@ -14,7 +14,9 @@ struct ContentView: View {
     var body: some View {
         VStack{
             AspectVGrid(items: viewModel.cards, aspectRatio: 2/3) { card in
-                SetCardView(card: card).padding(2)
+                SetCardView(card: card).padding(2).onTapGesture {
+                    viewModel.choose(card)
+                }
             }
             Button(action: {
                 viewModel.addThreeCards()
