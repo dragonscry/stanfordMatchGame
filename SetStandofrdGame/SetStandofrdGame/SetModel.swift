@@ -20,8 +20,10 @@ struct SetGame {
     }
     
     mutating func addThreeCards() {
-        for _ in 0..<3 {
-            currentDeck.append(fullDeck.removeFirst())
+        if !fullDeck.isEmpty {
+            for _ in 0..<3 {
+                currentDeck.append(fullDeck.removeFirst())
+            }
         }
     }
     

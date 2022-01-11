@@ -9,19 +9,22 @@ import SwiftUI
 
 struct SymbolView: View {
     
-    let color = Color.red
+    let color : Color
+    let shape : cardSymbol
+    let cardFill : Color
     
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                Ellipse().fill(color.opacity(0.5)).overlay(Rectangle().strokeBorder(lineWidth: 3).foregroundColor(.red))
-            }.frame(width: proxy.size.width, height: proxy.size.height / 3)
+                switch shape {
+                case .diamond:
+                    DiamondShape().fill(cardFill).overlay(DiamondShape().stroke(lineWidth: 3).fill(color))
+                case .rect:
+                    Rectangle().fill(cardFill).overlay(Rectangle().stroke(lineWidth: 3).fill(color))
+                case .oval:
+                    Ellipse().fill(cardFill).overlay(Ellipse().stroke(lineWidth: 3).fill(color))
+                }
+            }
         }
-    }
-}
-
-struct SymbolView_Previews: PreviewProvider {
-    static var previews: some View {
-        SymbolView()
     }
 }

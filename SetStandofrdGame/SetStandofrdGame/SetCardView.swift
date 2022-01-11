@@ -46,25 +46,22 @@ struct SetCardView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                ForEach(0..<cardCount){ index in
-                    if card.cardSymbol == .oval {
-                        Capsule().strokeBorder(lineWidth: 3).foregroundColor(cardFill)
-                    }
-                    else if card.cardSymbol == .rect {
-                        Rectangle().fill(cardFill)
-                    }
-                    else {
-                        DiamondShape().fill(cardFill)
+            GeometryReader { geometry in
+                VStack {
+                    ForEach(0..<cardCount){ index in
+                        SymbolView(color: cardColor, shape: card.cardSymbol, cardFill: cardFill).frame(width: geometry.size.width/1.15, height: geometry.size.height/4)
+                            
+ //                           .position(x: geometry.size.width/2, y: geometry.size.height/2)
                     }
                 }
+                .position(x: geometry.size.width/2, y: geometry.size.height/2)
             }
-        }
+        }.overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3))
     }
 }
 
 struct SetCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SetCardView(card: SetCard(id: 3, cardColor: .red, cardSymbol: .diamond, cardCount: .three, cardFill: .filled))
+        SetCardView(card: SetCard(id: 1, cardColor: .red, cardSymbol: .diamond, cardCount: .three, cardFill: .filled))
     }
 }

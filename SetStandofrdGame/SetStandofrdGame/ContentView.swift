@@ -13,17 +13,13 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
-            Text("\(viewModel.cards.count)")
-                .padding()
+            AspectVGrid(items: viewModel.cards, aspectRatio: 2/3) { card in
+                SetCardView(card: card).padding(2)
+            }
             Button(action: {
                 viewModel.addThreeCards()
             }){
                 Text("Add three cards")
-            }
-            Button(action: {
-                viewModel.restart()
-            }){
-                Text("RESTART")
             }
         }
 
