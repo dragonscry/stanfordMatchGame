@@ -13,11 +13,23 @@ struct SetGame {
     
     private var fullDeck : Array<SetCard>
     private(set) var currentDeck : Array<SetCard>
+    private var firstChosenCardIndex : Int?
+    private var secondChosenCardIndex : Int?
+    private var thirdChosenCardIndex : Int?
     
     
     mutating func choose(_ card: SetCard) {
         if let chosenIndex = currentDeck.firstIndex(where: {$0.id == card.id}) {
             currentDeck[chosenIndex].isChosen.toggle()
+            if firstChosenCardIndex == nil {
+                firstChosenCardIndex = chosenIndex
+            }
+            if secondChosenCardIndex == nil {
+                firstChosenCardIndex = chosenIndex
+            }
+            if thirdChosenCardIndex == nil {
+                firstChosenCardIndex = chosenIndex
+            }
         }
     }
     
