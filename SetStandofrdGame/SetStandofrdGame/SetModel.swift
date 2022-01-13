@@ -25,11 +25,12 @@ struct SetGame {
                 firstChosenCardIndex = chosenIndex
             }
             if secondChosenCardIndex == nil {
-                firstChosenCardIndex = chosenIndex
+                secondChosenCardIndex = chosenIndex
             }
             if thirdChosenCardIndex == nil {
-                firstChosenCardIndex = chosenIndex
+                thirdChosenCardIndex = chosenIndex
             }
+            
         }
     }
     
