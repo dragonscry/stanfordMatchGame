@@ -11,24 +11,73 @@ struct SetGame {
     
     private let Deck : SetGameDeck
     
-    private var fullDeck : Array<SetCard>
+    private(set) var fullDeck : Array<SetCard>
     private(set) var currentDeck : Array<SetCard>
     private var firstChosenCardIndex : Int?
     private var secondChosenCardIndex : Int?
     private var thirdChosenCardIndex : Int?
     
+    var score = 0
+    
     
     mutating func choose(_ card: SetCard) {
         if let chosenIndex = currentDeck.firstIndex(where: {$0.id == card.id}) {
+            
             currentDeck[chosenIndex].isChosen.toggle()
-            if firstChosenCardIndex == nil {
-                firstChosenCardIndex = chosenIndex
+            
+            if currentDeck[chosenIndex].isChosen {
+                if firstChosenCardIndex == nil {
+                    firstChosenCardIndex = chosenIndex
+                }
+                else if secondChosenCardIndex == nil {
+                    secondChosenCardIndex = chosenIndex
+                }
+                else if thirdChosenCardIndex == nil {
+                    thirdChosenCardIndex = chosenIndex
+                }
             }
-            if secondChosenCardIndex == nil {
-                secondChosenCardIndex = chosenIndex
+            
+            if !currentDeck[chosenIndex].isChosen {
+                if firstChosenCardIndex == chosenIndex {
+                    firstChosenCardIndex = nil
+                }
+                else if secondChosenCardIndex == chosenIndex {
+                    secondChosenCardIndex = nil
+                }
+                else if thirdChosenCardIndex == chosenIndex {
+                    thirdChosenCardIndex = nil
+                }
             }
-            if thirdChosenCardIndex == nil {
-                thirdChosenCardIndex = chosenIndex
+            
+            if firstChosenCardIndex != nil && secondChosenCardIndex != nil && thirdChosenCardIndex != nil {
+                if cardColorMatch(firstCard: currentDeck[firstChosenCardIndex!], secondCard: currentDeck[secondChosenCardIndex!], thirdCard: currentDeck[thirdChosenCardIndex!]) &&
+                    cardSymbolMatch(firstCard: currentDeck[firstChosenCardIndex!], secondCard: currentDeck[secondChosenCardIndex!], thirdCard: currentDeck[thirdChosenCardIndex!]) &&
+                    cardCountMatch(firstCard: currentDeck[firstChosenCardIndex!], secondCard: currentDeck[secondChosenCardIndex!], thirdCard: currentDeck[thirdChosenCardIndex!]) &&
+                    cardFillMatch(firstCard: currentDeck[firstChosenCardIndex!], secondCard: currentDeck[secondChosenCardIndex!], thirdCard: currentDeck[thirdChosenCardIndex!])
+                {
+                    score += 3
+                    currentDeck.remove(at: firstChosenCardIndex!)
+                    currentDeck.remove(at: secondChosenCardIndex!)
+                    currentDeck.remove(at: thirdChosenCardIndex!)
+                  
+                    if !fullDeck.isEmpty {
+                        currentDeck.insert(fullDeck.removeFirst(), at: firstChosenCardIndex!)
+                        currentDeck.insert(fullDeck.removeFirst(), at: secondChosenCardIndex!)
+                        currentDeck.insert(fullDeck.removeFirst(), at: thirdChosenCardIndex!)
+                    }
+                    
+                }
+                else {
+                    score -= 1
+                    currentDeck[firstChosenCardIndex!].isChosen = false
+                    currentDeck[secondChosenCardIndex!].isChosen = false
+                    currentDeck[thirdChosenCardIndex!].isChosen = false
+                }
+                
+                firstChosenCardIndex = nil
+                secondChosenCardIndex = nil
+                thirdChosenCardIndex = nil
+                
             }
             
         }
@@ -48,6 +97,39 @@ struct SetGame {
         currentDeck = []
         for _ in 0..<12 {
             currentDeck.append(fullDeck.removeFirst())
+        }
+    }
+    
+    func cardColorMatch(firstCard: SetCard, secondCard: SetCard, thirdCard: SetCard) -> Bool {
+        if (firstCard.cardColor == secondCard.cardColor && secondCard.cardColor == thirdCard.cardColor) || (firstCard.cardColor != secondCard.cardColor && secondCard.cardColor != thirdCard.cardColor){
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    func cardSymbolMatch(firstCard: SetCard, secondCard: SetCard, thirdCard: SetCard) -> Bool {
+        if (firstCard.cardSymbol == secondCard.cardSymbol && secondCard.cardSymbol == thirdCard.cardSymbol) || (firstCard.cardSymbol != secondCard.cardSymbol && secondCard.cardSymbol != thirdCard.cardSymbol){
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    func cardCountMatch(firstCard: SetCard, secondCard: SetCard, thirdCard: SetCard) -> Bool {
+        if (firstCard.cardCount == secondCard.cardCount && secondCard.cardCount == thirdCard.cardCount) || (firstCard.cardCount != secondCard.cardCount && secondCard.cardCount != thirdCard.cardCount){
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    func cardFillMatch(firstCard: SetCard, secondCard: SetCard, thirdCard: SetCard) -> Bool {
+        if (firstCard.cardFill == secondCard.cardFill && secondCard.cardFill == thirdCard.cardFill) || (firstCard.cardFill != secondCard.cardFill && secondCard.cardFill != thirdCard.cardFill){
+            return true
+        }
+        else {
+            return false
         }
     }
     

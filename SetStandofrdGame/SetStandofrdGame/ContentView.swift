@@ -13,6 +13,8 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
+            Text("Your current score is \(viewModel.score())")
+            Text("Cards in deck \(viewModel.cardCountInFullDeck())")
             AspectVGrid(items: viewModel.cards, aspectRatio: 2/3) { card in
                 SetCardView(card: card).padding(2).onTapGesture {
                     viewModel.choose(card)
@@ -22,6 +24,11 @@ struct ContentView: View {
                 viewModel.addThreeCards()
             }){
                 Text("Add three cards")
+            }
+            Button(action: {
+                viewModel.restart()
+            }){
+                Text("New Game")
             }
         }
 

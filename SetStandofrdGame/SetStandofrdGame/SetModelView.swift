@@ -10,6 +10,13 @@ import SwiftUI
 class SetModelView: ObservableObject {
     @Published private var model: SetGame
     
+    func score() -> Int {
+        return model.score
+    }
+    
+    func cardCountInFullDeck() -> Int {
+        return model.fullDeck.count
+    }
     var cards: Array<SetCard> {
         model.currentDeck
     }
