@@ -56,14 +56,18 @@ struct SetGame {
                     cardFillMatch(firstCard: currentDeck[firstChosenCardIndex!], secondCard: currentDeck[secondChosenCardIndex!], thirdCard: currentDeck[thirdChosenCardIndex!])
                 {
                     score += 3
-                    currentDeck.remove(at: firstChosenCardIndex!)
-                    currentDeck.remove(at: secondChosenCardIndex!)
-                    currentDeck.remove(at: thirdChosenCardIndex!)
-                  
                     if !fullDeck.isEmpty {
+                        currentDeck.remove(at: firstChosenCardIndex!)
                         currentDeck.insert(fullDeck.removeFirst(), at: firstChosenCardIndex!)
+                        currentDeck.remove(at: secondChosenCardIndex!)
                         currentDeck.insert(fullDeck.removeFirst(), at: secondChosenCardIndex!)
+                        currentDeck.remove(at: thirdChosenCardIndex!)
                         currentDeck.insert(fullDeck.removeFirst(), at: thirdChosenCardIndex!)
+                    } else
+                    {
+                        currentDeck.remove(at: firstChosenCardIndex!)
+                        currentDeck.remove(at: secondChosenCardIndex!)
+                        currentDeck.remove(at: thirdChosenCardIndex!)
                     }
                     
                 }
