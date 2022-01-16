@@ -18,7 +18,7 @@ class SetModelView: ObservableObject {
         return model.fullDeck.count
     }
     var cards: Array<SetCard> {
-        model.currentDeck
+        model.fullDeck
     }
     
     func addThreeCards() {
