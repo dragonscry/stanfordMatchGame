@@ -50,7 +50,7 @@ struct CardView: View {
                 Pie(startAngle: Angle(degrees: 30), endAngle: Angle(degrees: -90)).padding(5).opacity(0.5)
                 Text("\(card.content)")
                     .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
-                    .animation(.linear(duration: 1).repeatForever(autoreverses: false))
+                    .animation(.linear(duration: 1).repeatForever(autoreverses: false), value: card.isMatched)
                     .font(Font.system(size: DrawingConstants.fontSize))
                     .scaleEffect(scale(thatFits: geometry.size))
                 
