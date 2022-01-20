@@ -11,26 +11,60 @@ struct ContentView: View {
     
     @ObservedObject var viewModel: EmojiMemoryGame
     
+    @Namespace private var dealingNamespace
+    
     var body: some View {
-        VStack {
-            Text(EmojiMemoryGame.themes[viewModel.number].themeName)
-                .font(.largeTitle)
+        ZStack(alignment: .bottom) {
+            VStack {
+                Text(EmojiMemoryGame.themes[viewModel.number].themeName)
+                    .font(.largeTitle)
+                    .padding(.horizontal)
+                Text("Your Score is \(viewModel.score())")
+                gameBody
+                HStack{
+                    shuffle
+                    Spacer()
+                    restart
+                }
                 .padding(.horizontal)
-            Text("Your Score is \(viewModel.score())")
-            gameBody
-            shuffle
+            }
+            deckBody
             
+        }.padding()
+    }
+    
+    @State private var dealt = Set<Int>()
+    
+    private func deal(_ card: MemoryGame<String>.Card) {
+        dealt.insert(card.id)
+    }
+    
+    private func isUndealt(_ card: MemoryGame<String>.Card) -> Bool {
+        return !dealt.contains(card.id)
+    }
+    
+    private func dealAnimation(for card: MemoryGame<String>.Card) -> Animation {
+        var delay = 0.0
+        if let index = viewModel.cards.firstIndex(where: {$0.id == card.id}) {
+            delay = Double(index) * (CardConstants.dealDuration / Double(viewModel.cards.count))
         }
-        .padding()
+        return Animation.easeInOut(duration: CardConstants.dealDuration).delay(delay)
+    }
+    
+    private func zIndex(of card: MemoryGame<String>.Card) -> Double {
+        -Double(viewModel.cards.firstIndex(where: {$0.id == card.id }) ?? 0)
     }
     
     var gameBody: some View {
         AspectVGrid(items: viewModel.cards, aspectRatio: 2/3){ card in
-            if card.isMatched && !card.isFaceUp {
+            if isUndealt(card) || (card.isMatched && !card.isFaceUp) {
                 Color.clear
             } else {
                 CardView(card: card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
                     .padding(4)
+                    .transition(AnyTransition.asymmetric(insertion: .identity, removal: .scale))
+                    .zIndex(zIndex(of: card))
                     .onTapGesture {
                         withAnimation() {
                             viewModel.choose(card)
@@ -38,15 +72,54 @@ struct ContentView: View {
                     }
             }
         }
-        .foregroundColor(.red)
+        .foregroundColor(CardConstants.color)
+    }
+    
+    var deckBody: some View {
+        ZStack {
+            ForEach(viewModel.cards.filter(isUndealt)) { card in
+                CardView(card: card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+                    .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .identity))
+                    .zIndex(zIndex(of: card))
+            }
+        }
+        .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
+        .foregroundColor(CardConstants.color)
+        .onTapGesture {
+            for card in viewModel.cards {
+                withAnimation(dealAnimation(for: card)) {
+                    
+                    deal(card)
+                }
+            }
+        }
     }
     
     var shuffle: some View {
         Button("Shuffle") {
             withAnimation(){
-            viewModel.shuffle()
+                viewModel.shuffle()
             }
         }
+    }
+    
+    var restart: some View {
+        Button("Restart") {
+            withAnimation {
+                dealt = []
+                viewModel.reinvoke()
+            }
+        }
+    }
+    
+    private struct CardConstants {
+        static let color = Color.red
+        static let aspectRatio: CGFloat = 2/3
+        static let dealDuration: Double = 0.5
+        static let totalDealDuration: Double = 2
+        static let undealtHeight: CGFloat = 90
+        static let undealtWidth = undealtHeight * aspectRatio
     }
 }
 
