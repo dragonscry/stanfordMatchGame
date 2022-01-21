@@ -21,6 +21,14 @@ class SetModelView: ObservableObject {
         model.currentDeck
     }
     
+    var fullDeck: Array<SetCard> {
+        model.fullDeck
+    }
+    
+    func gameDeck() {
+        model.gameDeck()
+    }
+    
     func addThreeCards() {
         model.addThreeCards()
     }

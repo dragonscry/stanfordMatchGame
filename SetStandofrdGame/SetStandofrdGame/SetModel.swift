@@ -96,9 +96,7 @@ struct SetGame {
     }
     
     mutating func gameDeck() {
-        for _ in 0..<12 {
             self.currentDeck.append(fullDeck.removeFirst())
-        }
     }
     
     init() {
