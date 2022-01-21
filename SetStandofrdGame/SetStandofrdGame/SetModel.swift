@@ -105,7 +105,7 @@ struct SetGame {
     }
     
     func cardColorMatch(firstCard: SetCard, secondCard: SetCard, thirdCard: SetCard) -> Bool {
-        if (firstCard.cardColor == secondCard.cardColor && secondCard.cardColor == thirdCard.cardColor) || (firstCard.cardColor != secondCard.cardColor && secondCard.cardColor != thirdCard.cardColor){
+        if ((firstCard.cardColor == secondCard.cardColor) && (secondCard.cardColor == thirdCard.cardColor)) || ((firstCard.cardColor != secondCard.cardColor) && (secondCard.cardColor != thirdCard.cardColor)){
             return true
         }
         else {
@@ -113,7 +113,7 @@ struct SetGame {
         }
     }
     func cardSymbolMatch(firstCard: SetCard, secondCard: SetCard, thirdCard: SetCard) -> Bool {
-        if (firstCard.cardSymbol == secondCard.cardSymbol && secondCard.cardSymbol == thirdCard.cardSymbol) || (firstCard.cardSymbol != secondCard.cardSymbol && secondCard.cardSymbol != thirdCard.cardSymbol){
+        if ((firstCard.cardSymbol == secondCard.cardSymbol) && (secondCard.cardSymbol == thirdCard.cardSymbol)) || ((firstCard.cardSymbol != secondCard.cardSymbol) && (secondCard.cardSymbol != thirdCard.cardSymbol)){
             return true
         }
         else {
@@ -121,7 +121,7 @@ struct SetGame {
         }
     }
     func cardCountMatch(firstCard: SetCard, secondCard: SetCard, thirdCard: SetCard) -> Bool {
-        if (firstCard.cardCount == secondCard.cardCount && secondCard.cardCount == thirdCard.cardCount) || (firstCard.cardCount != secondCard.cardCount && secondCard.cardCount != thirdCard.cardCount){
+        if ((firstCard.cardCount == secondCard.cardCount) && (secondCard.cardCount == thirdCard.cardCount)) || ((firstCard.cardCount != secondCard.cardCount) && (secondCard.cardCount != thirdCard.cardCount)){
             return true
         }
         else {
@@ -129,7 +129,7 @@ struct SetGame {
         }
     }
     func cardFillMatch(firstCard: SetCard, secondCard: SetCard, thirdCard: SetCard) -> Bool {
-        if (firstCard.cardFill == secondCard.cardFill && secondCard.cardFill == thirdCard.cardFill) || (firstCard.cardFill != secondCard.cardFill && secondCard.cardFill != thirdCard.cardFill){
+        if ((firstCard.cardFill == secondCard.cardFill) && (secondCard.cardFill == thirdCard.cardFill)) || ((firstCard.cardFill != secondCard.cardFill) && (secondCard.cardFill != thirdCard.cardFill)){
             return true
         }
         else {

@@ -51,8 +51,6 @@ struct SetCardView: View {
                 VStack {
                     ForEach(0..<cardCount){ index in
                         SymbolView(color: cardColor, shape: card.cardSymbol, cardFill: cardFill).frame(width: geometry.size.width/1.15, height: geometry.size.height/4)
-                            
- //                           .position(x: geometry.size.width/2, y: geometry.size.height/2)
                     }
                 }
                 .position(x: geometry.size.width/2, y: geometry.size.height/2)
