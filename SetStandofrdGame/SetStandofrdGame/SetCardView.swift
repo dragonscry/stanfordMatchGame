@@ -56,7 +56,8 @@ struct SetCardView: View {
                 .position(x: geometry.size.width/2, y: geometry.size.height/2)
             }
 
-        }.overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3))
+        }.cardify(isFaceUp: card.isFaceUp)
+        //.overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3))
     }
 }
 

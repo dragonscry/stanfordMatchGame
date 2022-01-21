@@ -20,6 +20,7 @@ struct ContentView: View {
                     viewModel.choose(card)
                 }
             }
+            .foregroundColor(.red)
             Button(action: {
                 viewModel.addThreeCards()
             }){
@@ -31,6 +32,7 @@ struct ContentView: View {
                 Text("New Game")
             }
         }
+        
 
     }
 }

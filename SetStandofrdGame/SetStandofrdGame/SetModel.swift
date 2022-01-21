@@ -88,10 +88,16 @@ struct SetGame {
     }
     
     mutating func addThreeCards() {
-        if !fullDeck.isEmpty {
+        if !fullDeck.isEmpty && !currentDeck.isEmpty {
             for _ in 0..<3 {
                 currentDeck.append(fullDeck.removeFirst())
             }
+        }
+    }
+    
+    mutating func gameDeck() {
+        for _ in 0..<12 {
+            self.currentDeck.append(fullDeck.removeFirst())
         }
     }
     
@@ -99,9 +105,6 @@ struct SetGame {
         Deck = SetGameDeck()
         fullDeck = Deck.deck
         currentDeck = []
-        for _ in 0..<12 {
-            currentDeck.append(fullDeck.removeFirst())
-        }
     }
     
     func cardColorMatch(firstCard: SetCard, secondCard: SetCard, thirdCard: SetCard) -> Bool {
@@ -168,6 +171,7 @@ struct SetCard : Identifiable{
     let cardSymbol : cardSymbol
     let cardCount: cardCount
     let cardFill: cardFill
+    var isFaceUp = false
 }
 
 enum cardColor : CaseIterable {

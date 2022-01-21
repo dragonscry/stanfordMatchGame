@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A077CCC279AF61200961277 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A077CCB279AF61200961277 /* Cardify.swift */; };
 		9A9B5B622789EADD00EE9598 /* SetStandofrdGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B5B612789EADD00EE9598 /* SetStandofrdGameApp.swift */; };
 		9A9B5B642789EADD00EE9598 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B5B632789EADD00EE9598 /* ContentView.swift */; };
 		9A9B5B662789EADE00EE9598 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A9B5B652789EADE00EE9598 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A077CCB279AF61200961277 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		9A9B5B5E2789EADD00EE9598 /* SetStandofrdGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetStandofrdGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A9B5B612789EADD00EE9598 /* SetStandofrdGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStandofrdGameApp.swift; sourceTree = "<group>"; };
 		9A9B5B632789EADD00EE9598 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				9A9B5B632789EADD00EE9598 /* ContentView.swift */,
 				9A9B5B79278E1C2300EE9598 /* AspectVGrid.swift */,
 				9A9B5B73278A4BC300EE9598 /* SetCardView.swift */,
+				9A077CCB279AF61200961277 /* Cardify.swift */,
 				9A9B5B75278AF33300EE9598 /* SymbolView.swift */,
 				9A9B5B77278AF4A700EE9598 /* DiamondShape.swift */,
 				9A9B5B6F2789EB1F00EE9598 /* SetModel.swift */,
@@ -158,6 +161,7 @@
 				9A9B5B7A278E1C2300EE9598 /* AspectVGrid.swift in Sources */,
 				9A9B5B76278AF33300EE9598 /* SymbolView.swift in Sources */,
 				9A9B5B642789EADD00EE9598 /* ContentView.swift in Sources */,
+				9A077CCC279AF61200961277 /* Cardify.swift in Sources */,
 				9A9B5B78278AF4A700EE9598 /* DiamondShape.swift in Sources */,
 				9A9B5B74278A4BC300EE9598 /* SetCardView.swift in Sources */,
 				9A9B5B72278A48DA00EE9598 /* SetModelView.swift in Sources */,
