@@ -13,6 +13,7 @@ struct SetGame {
     
     private(set) var fullDeck : Array<SetCard>
     private(set) var currentDeck : Array<SetCard>
+    private(set) var sbros: Array<SetCard>
     private var firstChosenCardIndex : Int?
     private var secondChosenCardIndex : Int?
     private var thirdChosenCardIndex : Int?
@@ -57,12 +58,18 @@ struct SetGame {
                 {
                     score += 3
                     if !fullDeck.isEmpty {
-                        currentDeck.remove(at: firstChosenCardIndex!)
-                        currentDeck.insert(fullDeck.removeFirst(), at: firstChosenCardIndex!)
-                        currentDeck.remove(at: secondChosenCardIndex!)
-                        currentDeck.insert(fullDeck.removeFirst(), at: secondChosenCardIndex!)
-                        currentDeck.remove(at: thirdChosenCardIndex!)
-                        currentDeck.insert(fullDeck.removeFirst(), at: thirdChosenCardIndex!)
+                        sbros.append(currentDeck.remove(at: firstChosenCardIndex!))
+                        var card = fullDeck.removeFirst()
+                        card.isFaceUp = true
+                        currentDeck.insert(card, at: firstChosenCardIndex!)
+                        sbros.append(currentDeck.remove(at: secondChosenCardIndex!))
+                        card = fullDeck.removeFirst()
+                        card.isFaceUp = true
+                        currentDeck.insert(card, at: secondChosenCardIndex!)
+                        sbros.append(currentDeck.remove(at: thirdChosenCardIndex!))
+                        card = fullDeck.removeFirst()
+                        card.isFaceUp = true
+                        currentDeck.insert(card, at: thirdChosenCardIndex!)
                     } else
                     {
                         currentDeck.remove(at: firstChosenCardIndex!)
@@ -90,19 +97,24 @@ struct SetGame {
     mutating func addThreeCards() {
         if !fullDeck.isEmpty && !currentDeck.isEmpty {
             for _ in 0..<3 {
-                currentDeck.append(fullDeck.removeFirst())
+                var card = fullDeck.removeFirst()
+                card.isFaceUp = true
+                self.currentDeck.append(card)
             }
         }
     }
     
     mutating func gameDeck() {
-            self.currentDeck.append(fullDeck.removeFirst())
+        var card = fullDeck.removeFirst()
+        card.isFaceUp = true
+        self.currentDeck.append(card)
     }
     
     init() {
         Deck = SetGameDeck()
         fullDeck = Deck.deck
         currentDeck = []
+        sbros = []
     }
     
     func cardColorMatch(firstCard: SetCard, secondCard: SetCard, thirdCard: SetCard) -> Bool {

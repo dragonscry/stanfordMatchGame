@@ -11,24 +11,33 @@ struct ContentView: View {
     
     @ObservedObject var viewModel : SetModelView
     
+    @State var emptyDeck = [SetCard]()
+    
     @Namespace private var dealingNamespace
     
     var body: some View {
         VStack{
             Text("Your current score is \(viewModel.score())")
             Text("Cards in deck \(viewModel.cardCountInFullDeck())")
+            if !viewModel.cards.isEmpty {
             AspectVGrid(items: viewModel.cards, aspectRatio: 2/3) { card in
                 SetCardView(card: card)
                     .matchedGeometryEffect(id: card.id, in: dealingNamespace)
                     .padding(2)
                     .onTapGesture {
-                        viewModel.choose(card)
+                        withAnimation {
+                            viewModel.choose(card)
+                        }
                     }
                 
             }
             .foregroundColor(.red)
+            }
+            Spacer()
             Button(action: {
-                viewModel.addThreeCards()
+                withAnimation {
+                    viewModel.addThreeCards()
+                }
             }){
                 Text("Add three cards")
             }
@@ -38,7 +47,12 @@ struct ContentView: View {
                 Text("New Game")
             }
             
-            deckBody
+            HStack {
+                deckBody
+                Spacer()
+                emptyBody
+            }
+            .padding(.horizontal)
         }
         
         
@@ -55,18 +69,30 @@ struct ContentView: View {
         .frame(width: 60, height: 90)
         .foregroundColor(.red)
         .onTapGesture {
-      //      for card in viewModel.fullDeck {
-        //    for i in 0..<12 {
-                withAnimation {
+            //      for card in viewModel.fullDeck {
+            //var i = 0
+           for i in 0..<12 {
+               withAnimation(dealAnimation(for: i)) {
                     viewModel.gameDeck()
                 }
-        //    }
+            }
         }
     }
     
+    var emptyBody: some View {
+        ZStack {
+            ForEach(viewModel.sbros){ card in
+                SetCardView(card: card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+            }
+        }
+        .frame(width: 60, height: 90)
+        .foregroundColor(.red)
+    }
+    
     private func dealAnimation(for int: Int) -> Animation {
-          var delay = Double(int)
-        return Animation.easeInOut(duration: 0.5).delay(delay)
+        let delay = Double(int)
+        return Animation.easeInOut(duration: 5).delay(delay/5)
     }
     
 }

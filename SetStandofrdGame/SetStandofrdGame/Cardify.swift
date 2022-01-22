@@ -25,12 +25,12 @@ struct Cardify: ViewModifier {
             let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
             if rotation < 90 {
                 shape.fill(.white)
-                shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
             }
             else {
                 shape.fill()
             }
             content.opacity(rotation < 90 ? 1 : 0)
+            shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
         }
         .rotation3DEffect(Angle.degrees(rotation), axis: (0, 1, 0))
         

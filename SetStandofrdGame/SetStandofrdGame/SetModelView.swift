@@ -25,6 +25,10 @@ class SetModelView: ObservableObject {
         model.fullDeck
     }
     
+    var sbros: Array<SetCard> {
+        model.sbros
+    }
+    
     func gameDeck() {
         model.gameDeck()
     }
