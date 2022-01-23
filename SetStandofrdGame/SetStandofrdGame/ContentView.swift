@@ -31,7 +31,7 @@ struct ContentView: View {
                     }
                 
             }
-            .foregroundColor(.red)
+            .foregroundColor(.blue)
             }
             Spacer()
             Button(action: {
