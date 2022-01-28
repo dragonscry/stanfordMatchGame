@@ -29,21 +29,35 @@ struct EmojiArtDocumentView: View {
                         .position(position(for: emoji, in: geometry))
                 }
             }
-            .onDrop(of: [.plainText], isTargeted: nil) { providers, location in
+            .onDrop(of: [.plainText, .url, .image], isTargeted: nil) { providers, location in
                 drop(providers: providers, at: location, in: geometry)
             }
         }
     }
     
     private func drop(providers: [NSItemProvider], at location: CGPoint, in geometry: GeometryProxy) -> Bool {
-        return providers.loadObjects(ofType: String.self) { string in
-            if let emoji = string.first, emoji.isEmoji {
-                document.addEmoji(
-                    String(emoji),
-                    at: convertToEmojiCoordinates(location, in: geometry),
-                    size: defaultEmojiFontSize)
+        var found = providers.loadObjects(ofType: URL.self) {url in
+            document.setBackground(EmojiArtModel.Background.url(url.imageURL))
+        }
+        if !found {
+            found = providers.loadObjects(ofType: UIImage.self) {image in
+                if let data = image.jpegData(compressionQuality: 1.0) {
+                    document.setBackground(.imageData(data))
+                }
             }
         }
+        if !found {
+            found = providers.loadObjects(ofType: String.self) { string in
+                if let emoji = string.first, emoji.isEmoji {
+                    document.addEmoji(
+                        String(emoji),
+                        at: convertToEmojiCoordinates(location, in: geometry),
+                        size: defaultEmojiFontSize)
+                }
+            }
+        }
+        
+        return found
     }
     
     private func position(for emoji: EmojiArtModel.Emoji, in geometry: GeometryProxy) -> CGPoint {
@@ -63,8 +77,8 @@ struct EmojiArtDocumentView: View {
     private func convertFromEmojiCoordinates(_ location: (x:Int, y: Int), in geometry: GeometryProxy) -> CGPoint {
         let center = geometry.frame(in: .local).center
         return CGPoint (
-        x: center.x + CGFloat(location.x),
-        y: center.y + CGFloat(location.y)
+            x: center.x + CGFloat(location.x),
+            y: center.y + CGFloat(location.y)
         )
     }
     
