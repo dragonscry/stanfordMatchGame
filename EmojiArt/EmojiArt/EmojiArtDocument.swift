@@ -17,12 +17,25 @@ class EmojiArtDocument: ObservableObject {
         }
     }
     
+    private struct Autosave {
+        static let filename = "Autosaved.emojiart"
+    }
+    
+    private func autosave() {
+        if let url = Autosave.url {
+            save(to: url)
+        }
+    }
+    
     private func save(to url: URL) {
-        let thisfunction = "\(String(describing: self))/ \(#function)"
+        let thisfunction = "\(String(describing: self)).\(#function)"
         do {
             let data: Data = try emojiArt.json()
+            print("\(thisfunction) json = \(String(data: data, encoding: .utf8) ?? "nil" )")
             try data.write(to: url)
-        }catch let encodingError where encodingError is EncodingError {
+            print("\(thisfunction) success")
+        } catch let encodingError where encodingError is EncodingError {
+            print("\(thisfunction) could not encode EmojiArt as JSON because \(encodingError.localizedDescription)")
             
         } catch {
             print("\(thisfunction) = \(error)")

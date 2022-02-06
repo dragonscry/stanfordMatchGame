@@ -29,7 +29,7 @@ struct EmojiArtModel: Codable {
     
     func json() throws -> Data {
         return try JSONEncoder().encode(self)
-        //test
+        
     }
     
     init() { }
