@@ -19,6 +19,10 @@ class EmojiArtDocument: ObservableObject {
     
     private struct Autosave {
         static let filename = "Autosaved.emojiart"
+        static var url: URL? {
+            let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+            return documentDirectory?.appendingPathComponent(filename)
+        }
     }
     
     private func autosave() {
