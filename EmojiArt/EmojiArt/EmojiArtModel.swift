@@ -32,6 +32,14 @@ struct EmojiArtModel: Codable {
         
     }
     
+    init(json: Data) throws {
+        self = try JSONDecoder().decode(EmojiArtModel.self, from: json)
+    }
+    
+    init(url: URL) throws {
+        let data = try Data(contentsOf: url)
+    }
+    
     init() { }
     
     private var uniqueEmojiId = 0
