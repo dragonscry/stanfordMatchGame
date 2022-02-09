@@ -38,6 +38,7 @@ struct EmojiArtModel: Codable {
     
     init(url: URL) throws {
         let data = try Data(contentsOf: url)
+        self = try EmojiArtModel(json: data)
     }
     
     init() { }
