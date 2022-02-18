@@ -47,7 +47,7 @@ struct ScrollingEmojisView: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(emojis.removingDuplicateCharacters.map {String($0) }, id: \.self) { emoji in
+                ForEach(emojis.removingDuplicateCharacters.map {String($0) }, id: \.self) { emoji in //need to implement
                     Text(emoji).onDrag {
                         NSItemProvider(object: emoji as NSString)
                     }
