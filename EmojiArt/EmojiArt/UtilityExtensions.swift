@@ -87,6 +87,12 @@ extension Array where Element == NSItemProvider {
     }
 }
 
+extension Array where Element == Character {
+    var removingDuplicateCharacters : Array<Element> {
+        self.reversed() // CHANGE IT!!!
+    }
+}
+
 extension Character {
     var isEmoji: Bool {
         if let firstScalar = unicodeScalars.first, firstScalar.properties.isEmoji {
