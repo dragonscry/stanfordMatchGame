@@ -89,7 +89,7 @@ extension Array where Element == NSItemProvider {
 
 extension Array where Element == Character {
     var removingDuplicateCharacters : Array<Element> {
-        self.reversed() // CHANGE IT!!!
+        Array(Set(self))
     }
 }
 
