@@ -87,9 +87,13 @@ extension Array where Element == NSItemProvider {
     }
 }
 
-extension Array where Element == Character {
+extension Array where Element == String {
     var removingDuplicateCharacters : Array<Element> {
         Array(Set(self))
+    }
+    
+    var reversedWithoutDuplicates : Array<Element> {
+        Array(Set(self)).reversed()
     }
 }
 
