@@ -97,6 +97,12 @@ extension Array where Element == String {
     }
 }
 
+extension String {
+    var removingDuplicateCharacters : String {
+        return String(Set(self))
+    }
+}
+
 extension Character {
     var isEmoji: Bool {
         if let firstScalar = unicodeScalars.first, firstScalar.properties.isEmoji {
