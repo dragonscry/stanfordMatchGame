@@ -39,8 +39,14 @@ struct PaletteChooser: View {
     
     @ViewBuilder
     var contextMenu: some View {
+        AnimatedActionButton(title: "Edit", systemImage: "pencil") {
+   //         editing = true
+            paletteToEdit = store.palette(at: chosenPaletteIndex)
+        }
         AnimatedActionButton(title: "New", systemImage: "plus") {
             store.insertPalette(named: "New", emojis: "", at: chosenPaletteIndex)
+     //       editing = true
+            paletteToEdit = store.palette(at: chosenPaletteIndex)
         }
         AnimatedActionButton(title: "Delete", systemImage: "minus.circle") {
             chosenPaletteIndex = store.removaPalette(at: chosenPaletteIndex)
@@ -71,7 +77,16 @@ struct PaletteChooser: View {
         }
         .id(palette.id)
         .transition(rollTransition)
+//        .popover(isPresented: $editing){
+//            PalleteEditor(palette: $store.palettes[chosenPaletteIndex])
+//        }
+        .popover(item: $paletteToEdit) { palette in
+            PalleteEditor(palette: $store.palettes[palette])
+        }
     }
+    
+//    @State private var editing = false
+    @State private var paletteToEdit: Palette?
     
     var rollTransition: AnyTransition {
         AnyTransition.asymmetric(insertion: .offset(x: 0, y: emojiFontSize), removal: .offset(x:0, y: -emojiFontSize))

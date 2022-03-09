@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A01D0A327BD87A80019DA00 /* PaletteChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A01D0A227BD87A80019DA00 /* PaletteChooser.swift */; };
+		9A01D0A527D9396F0019DA00 /* PalleteEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A01D0A427D9396F0019DA00 /* PalleteEditor.swift */; };
 		9A684DD727A5DAFE001510CF /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A684DD627A5DAFE001510CF /* UtilityViews.swift */; };
 		9AB7404927B590C900F873A9 /* PalletteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7404827B590C900F873A9 /* PalletteStore.swift */; };
 		9AB8C287279F1E8200C0800E /* EmojiArtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB8C286279F1E8200C0800E /* EmojiArtApp.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		9A01D0A227BD87A80019DA00 /* PaletteChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteChooser.swift; sourceTree = "<group>"; };
+		9A01D0A427D9396F0019DA00 /* PalleteEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalleteEditor.swift; sourceTree = "<group>"; };
 		9A684DD627A5DAFE001510CF /* UtilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
 		9AB7404827B590C900F873A9 /* PalletteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalletteStore.swift; sourceTree = "<group>"; };
 		9AB8C283279F1E8200C0800E /* EmojiArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,7 @@
 				9AB8C29827A1B43000C0800E /* EmojiArtDocument.swift */,
 				9AB7404827B590C900F873A9 /* PalletteStore.swift */,
 				9A01D0A227BD87A80019DA00 /* PaletteChooser.swift */,
+				9A01D0A427D9396F0019DA00 /* PalleteEditor.swift */,
 				9AB8C29A27A1B89C00C0800E /* UtilityExtensions.swift */,
 				9A684DD627A5DAFE001510CF /* UtilityViews.swift */,
 				9AB8C29627A0756700C0800E /* EmojiArtModel.Background.swift */,
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A01D0A527D9396F0019DA00 /* PalleteEditor.swift in Sources */,
 				9A684DD727A5DAFE001510CF /* UtilityViews.swift in Sources */,
 				9AB8C289279F1E8200C0800E /* EmojiArtDocumentView.swift in Sources */,
 				9AB8C287279F1E8200C0800E /* EmojiArtApp.swift in Sources */,
