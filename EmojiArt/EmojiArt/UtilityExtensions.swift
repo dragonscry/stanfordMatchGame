@@ -95,11 +95,12 @@ extension Array where Element == String {
     var reversedWithoutDuplicates : Array<Element> {
         Array(Set(self)).reversed()
     }
+    
 }
 
 extension String {
     var removingDuplicateCharacters : String {
-        return String(Set(self))
+        return String(Set(self).sorted(by: {$0 < $1}))
     }
 }
 
